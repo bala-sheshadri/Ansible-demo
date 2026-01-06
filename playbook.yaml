@@ -20,10 +20,6 @@
     - win_stat:
         path: C:\fool
 
-    - name: Retrieve the list of users
-      ansible.builtin.getent:
-          database: passwd
-      
       
     - name: Print return information from the previous task
       ansible.builtin.debug:
