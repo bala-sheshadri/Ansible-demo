@@ -25,7 +25,7 @@
       ansible.builtin.debug:
         var: msg
         #verbosity: 2
-      when: msg.find('Hi') != -1
+      #when: msg.find('Hi') != -1
 
     - name: Get Windows Last Boot Time
       ansible.windows.win_shell: |
