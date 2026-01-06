@@ -1,0 +1,27 @@
+---
+- name: Demo playbook
+  hosts: windows
+  tasks:
+    - win_ping:
+
+    - win_file:
+        path: c:\foo.conf
+        state: touch
+
+    - win_stat:
+        path: c:\foo.conf
+
+    - win_stat:
+        path: C:\fool
+
+    - name: Get Windows Last Boot Time
+      ansible.windows.win_shell: |
+        (Get-CimInstance -ClassName Win32_OperatingSystem -Property LastBootUpTime).LastBootUpTime.ToFileTime()
+      register: boot_time_result
+      changed_when: false # This task doesn't change the system
+
+    - name: Display Last Boot Time
+      ansible.builtin.debug:
+        msg: "Last Boot Time (FileTime): {{ boot_time_result.stdout }}"
+
+        
