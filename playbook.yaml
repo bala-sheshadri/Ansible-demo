@@ -2,6 +2,12 @@
 - name: Demo playbook
   hosts: windows
   tasks:
+
+    - name: Print a simple message
+      ansible.builtin.debug:
+        msg: "Hello, world! This task is now running."
+      register: msg
+
     - win_ping:
 
     - win_file:
@@ -13,6 +19,17 @@
 
     - win_stat:
         path: C:\fool
+
+    - name: Retrieve the list of users
+      ansible.builtin.getent:
+          database: passwd
+      
+      
+    - name: Print return information from the previous task
+      ansible.builtin.debug:
+        var: msg
+        #verbosity: 2
+      when: msg.find('Hi') != -1
 
     - name: Get Windows Last Boot Time
       ansible.windows.win_shell: |
