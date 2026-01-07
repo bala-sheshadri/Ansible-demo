@@ -1,0 +1,8 @@
+local_users:
+        -Bala
+        -Stephen
+        -Prakash
+local_groups:
+        -Bala_group
+        -Stephen_group
+        -Prakash_group

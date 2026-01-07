@@ -2,3 +2,13 @@ ansible_user: admin
 ansible_password: Pa$$w0rd
 ansible_connection: winrm
 ansible_winrm_server_cert_validation: ignore
+
+local_users:
+  - Bala
+  - Stephen
+  - Prakash
+local_groups:
+  - Bala_group
+  - Stephen_group
+  - Prakash_group
+
