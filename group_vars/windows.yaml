@@ -4,9 +4,9 @@ ansible_connection: winrm
 ansible_winrm_server_cert_validation: ignore
 
 local_users:
-  - Bala
-  - Stephen
-  - Prakash
+  - { name: 'Bala', groups: ['Bala_group'], password: 'testpassw0rd' }
+  - { name: 'Stephen', groups: ['Stephen_group'], password: 'testpassw0rd' }
+  - { name: 'Prakash', groups: ['Prakash_group'], password: 'testpassw0rd' }
 local_groups:
   - Bala_group
   - Stephen_group

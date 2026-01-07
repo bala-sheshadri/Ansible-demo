@@ -10,4 +10,14 @@
         description: Deploy Group
         state: present
       loop: "{{ local_groups }}"
+      tag: never
+
+    - name: Add several users
+      ansible.windows.win_user:
+        name: "{{ item.name }}"
+        password: "{{ item.password }}"
+        state: present
+        groups: "{{ item.groups }}"
+        loop: "{{ local_users }}"
+          
      
