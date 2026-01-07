@@ -10,7 +10,7 @@
         description: Deploy Group
         state: present
       loop: "{{ local_groups }}"
-      tags: never
+      #tags: never
 
     - name: Add several users
       ansible.windows.win_user:
