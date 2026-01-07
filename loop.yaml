@@ -18,6 +18,6 @@
         password: "{{ item.password }}"
         state: present
         groups: "{{ item.groups }}"
-        loop: "{{ local_users }}"
+      loop: "{{ local_users }}"
           
      
