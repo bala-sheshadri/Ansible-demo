@@ -4,7 +4,7 @@
   tasks:
     - name: Create a file from a Jinja2 template
       ansible.windows.win_template:
-        src: /templates/file.conf.j2
+        src: templates/file.conf.j2
         dest: C:\Temp\file.conf
 
     - name: Create a new group
