@@ -1,7 +1,13 @@
-- name: Create a new group
-  ansible.windows.win_group:
-    name: "{{item}}"
-    description: Deploy Group
-    state: present
-  loop: "{{ local_groups }}"
+---
+- name: loop playbook
+  hosts: windows
+  tasks:
+
+
+    - name: Create a new group
+      ansible.windows.win_group:
+        name: "{{item}}"
+        description: Deploy Group
+        state: present
+      loop: "{{ local_groups }}"
      
