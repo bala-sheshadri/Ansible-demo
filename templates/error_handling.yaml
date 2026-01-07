@@ -1,0 +1,25 @@
+---
+ - hosts: windows
+   tasks:
+    - name: Gather info on the 'wuauserv' (Windows Update) service
+      block:
+      - ansible.windows.win_service_info:
+          name: wuauserv1
+        register: service_info
+        failed_when: true
+
+
+      - debug:
+          var: service_info.services[0].state
+    
+      rescue:
+        - name: check for the correct service
+          ansible.windows.win_service_info:
+            name: wuauserv
+          register: service_info
+      always:
+        - name: Set service startup mode to auto and ensure it is started
+          ansible.windows.win_service:
+            name: wuauserv
+            start_mode: auto
+            state: started
