@@ -16,9 +16,10 @@
       ansible.windows.win_user:
         name: "{{ item.name }}"
         password: "{{ item.password }}"
-        state: present
+        state: absent
         groups: "{{ item.groups }}"
       loop: "{{ local_users }}"
+      notify: Restart Machine
   handlers:
     - name: Restart Machine
       ansible.windows.win_reboot:
