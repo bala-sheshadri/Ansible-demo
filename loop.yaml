@@ -2,7 +2,10 @@
 - name: loop playbook
   hosts: windows
   tasks:
-
+    - name: Create a file from a Jinja2 template
+      ansible.windows.win_template:
+      src: /templates/file.conf.j2
+      dest: C:\Temp\file.conf
 
     - name: Create a new group
       ansible.windows.win_group:
@@ -10,7 +13,7 @@
         description: Deploy Group
         state: present
       loop: "{{ local_groups }}"
-      #tags: never
+      tags: never
 
     - name: Add several users
       ansible.windows.win_user:
@@ -19,10 +22,12 @@
         state: absent
         groups: "{{ item.groups }}"
       loop: "{{ local_users }}"
-      notify: Restart Machine
-  handlers:
+      tags: never
+     # notify: Restart Machine
+ # handlers:
     - name: Restart Machine
       ansible.windows.win_reboot:
+      tags: never
         
 
      
