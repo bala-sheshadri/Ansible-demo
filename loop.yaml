@@ -19,5 +19,9 @@
         state: present
         groups: "{{ item.groups }}"
       loop: "{{ local_users }}"
-          
+  handlers:
+    - name: Restart Machine
+      ansible.windows.win_reboot:
+        
+
      
